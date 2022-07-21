@@ -14,7 +14,8 @@ export class InicioComponent implements OnInit, OnDestroy {
   constructor(private myService: MyService) { }
 
   ngOnInit(): void {
-    this.subscription = this.myService.getServerSentEvent(`http://localhost:3000/sse`).subscribe(data => {
+    this.subscription = this.myService.getServerSentEvent(`http://localhost:3000/sse`).subscribe( message => {
+      const { data } = message;
       console.log(data);
     });
   }
